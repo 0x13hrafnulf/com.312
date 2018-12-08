@@ -71,7 +71,8 @@ int main(int argc, char* argv[])
 				//---Layer Nodes update from input to Layers--------------------------
 				for (int i = 0; i < NLayers; i++){
 					HiddenLayer1[i] = 0.0f;// added bias right away
-					for(int k = 0; k < imageSize; ++k){//784 pixels
+					for(int k = 0; k < imageSize; ++k)
+					{//784 pixels
 						HiddenLayer1[i] += inputVec[k] * WinputToLayers[k*NLayers + i];//getting output??
 					}
 					HiddenLayer1[i] = (1.0f/(1.0f + exp(-1.0f * (HiddenLayer1[i]))));//squash
@@ -81,7 +82,8 @@ int main(int argc, char* argv[])
 				//----------------------------------------------------------------------
 				for (int i = 0; i < NLayers; i++){
 					HiddenLayer2[i] = 0.0f;
-					for(int k = 0; k < NLayers; ++k){
+					for(int k = 0; k < NLayers; ++k)
+					{
 						HiddenLayer2[i] += HiddenLayer1[k] * WLayer1ToLayer2[k*NLayers + i];//getting output??
 					}
 					HiddenLayer2[i] = (1.0f/(1.0f + exp(-1.0f * (HiddenLayer2[i]))));//squash
@@ -92,7 +94,8 @@ int main(int argc, char* argv[])
 				for(int i = 0; i < outputSize; ++i)//2
 				{
 					output[i] = 0.0f;// added bias right away
-					for(int k = 0; k < NLayers; ++k){//784 pixels
+					for(int k = 0; k < NLayers; ++k)
+					{//784 pixels
 						output[i] += HiddenLayer2[k] * WlayersToOutput[k*outputSize + i];//getting output??
 					}
 					output[i] = (1.0f/(1.0f + exp(-1.0f * (output[i]))));//squash
