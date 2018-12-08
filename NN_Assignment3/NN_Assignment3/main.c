@@ -169,9 +169,8 @@ int main(int argc, char* argv[])
 					HiddenLayer2[i] = 0.0f;
 					for(int k = 0; k < NLayers; ++k){
 						HiddenLayer2[i] += HiddenLayer1[k] * WLayer1ToLayer2[k*NLayers + i];//getting output??
-
-					HiddenLayer2[i] = (1.0f/(1.0f + exp(-1.0f * (HiddenLayer2[i]))));//squash
 					}
+					HiddenLayer2[i] = (1.0f/(1.0f + exp(-1.0f * (HiddenLayer2[i]))));//squash
 				}
 				HiddenLayer2[0] = 1.0f;//bias should be one
 
